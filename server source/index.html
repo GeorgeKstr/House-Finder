@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html>
+	<head>
+	<meta charset="utf-8" />
+	<title>APP</title>
+	<link rel="shortcut icon" href="favicon.ico" type="image/vnd.microsoft.icon" />
+	<script src="js/jquery-1.12.4.min.js"></script>
+	
+	<script src="js/jquery.mobile-1.4.5.min.js"></script> 
+	<link rel="stylesheet" href="css/jquery.mobile-1.4.5.min.css" />
+	
+	<link rel="stylesheet" href="css/leaflet.css" /> 
+	<script src="js/leaflet.js"></script>
+	
+	<script src="js/index.js"></script>
+	
+	<script src="js/mapbox.js"></script>
+	<link href="css/mapbox.css" rel='stylesheet'/>
+
+
+	<link rel="stylesheet" href="css/style.css"/>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+</head>
+<body>
+	<div data-role="page" id="login_screen" data-title="Login" data-theme="b">
+		<header data-role="header"data-position="fixed">
+			<h1>Σύνδεση</h1>
+		</header>
+		<form id="login_form">
+			<div class="form-group">
+				<label for="username">Ψευδώνυμο:</label>
+				<input id="username" type="text" value="" name="username" id="username" required/>
+			</div>                                 
+			<div class="form-group">                                     
+				<label for="password">Κωδικός χρήστη:</label>
+				<input id="password" type="password" value="" name="password" required/>
+			</div>
+			<div class="form-group">
+				<label for="rememberbox">Remember me</label>
+				<input type="checkbox" name="rememberbox" id="rememberbox"/>
+			</div>    
+			<input type="submit" data-theme="d" value="Σύνδεση" data-icon="arrow-r" data-iconpos="right">
+			<input type="button" data-theme="d" id="register_link" value="Δεν έχω λογαριασμό" data-icon="edit" data-iconpos="right">
+        </form> 
+	</div>
+	<div data-role="page" id="register_screen" data-title="Register" data-theme="b">
+		<div data-role="header" class="ui-bar" data-position="fixed">
+			<h1>Δημιουργία</h1>
+			<a class="ui-btn-left" data-icon="back" href="#login_screen" data-clear-btn="true">Πίσω</a>
+		</div>
+		<form id="register_form">
+			<div class="form-group">
+				<label for="register_realname">Real name:</label>
+                <input id="register_realname" type="text" value="" name="realname" required/>
+			</div>   
+			<div class="form-group">
+				<label for="register_lastname">Last name:</label>
+                <input id="register_lastname" type="text" value="" name="lastname" required/>
+			</div>    
+			<div class="form-group">
+				<label for="register_email">Email address:</label>
+                <input id="register_email" type="text" value="" name="email" required/>
+			</div>    
+			<div class="form-group">
+                <label for="register_username">Username:</label>
+                <input id="register_username" type="text" value="" name="username" required/>
+            </div>                                 
+            <div class="form-group">                                   
+                <label for="register_password">Password:</label>
+				<input id="register_password" type="password" value="" name="password" required/>
+			</div>
+			<div class="form-group">                                   
+				<label for="register_password2">Repeat password:</label>
+				<input id="register_password2" type="password" value="" name="password2" required"/>
+			</div>
+			<input type="submit" data-theme="b" value="Submit">
+        </form> 
+	</div>
+	<div data-role="page" id="main_screen" data-title="Home" data-theme="b">
+		<div data-role="header" class="ui-bar" data-position="fixed">
+			<h2 id="username_header"></h2>	
+		</div>
+		<div>
+			<a href="#list_screen" data-role="button" data-mini="true" data-icon="bullets">Λίστα Αγγελιών</a>
+			<a href="#my_screen" data-role="button" data-mini="true" data-icon="user">Οι αγγελίες μου</a>
+			<a href="#report_screen" data-role="button" data-mini="true" data-icon="plus">Δημιουργία Αγγελίας</a>
+			<a href="#map_screen" data-role="button" data-mini="true" data-icon="location">Αγγελίες στον χάρτη</a>
+			<a data-role="button" id="logout" data-mini="true" data-icon="back">Αποσύνδεση</a>
+		</div>
+	</div>
+	<div data-role="page" id="list_screen" data-title="House list" data-theme="b">
+		<div data-role="header" data-position="fixed">
+			<h1>Αγγελίες</h1>
+			<a class="ui-btn-left" data-icon="back" href="#main_screen" data-clear-btn="true">Πίσω</a>
+		</div>
+		<ul id="house_list" data-role="listview" data-filter="true" data-filter="true"/>
+    </div>
+	<div data-role="page" id="my_screen" data-title="House list" data-theme="b">
+		<div data-role="header" data-position="fixed">
+			<h1>Οι αγγελίες μου</h1>
+			<a class="ui-btn-left" data-icon="back" href="#main_screen" data-clear-btn="true">Πίσω</a>
+		</div>
+		<ul id="my_list" data-role="listview" data-filter="true" data-filter="true"/>
+    </div>
+	<div data-role="page" id="report_screen" data-title="Report" data-theme="b">
+		<div data-role="header" data-position="fixed">
+			<h1>Δημιουργία αγγελίας</h1>
+			<a class="ui-btn-left" data-icon="back" href="#main_screen" data-clear-btn="true">Πίσω</a>
+		</div>
+		<form id="report_form">
+			<div class="form-group">   
+				<label for="select-native-1">Κατηγορία ακινήτου:</label>
+				<select name="category" id="select-native-1">
+					<option value="1">Γκαρσονιέρα</option>
+					<option value="2">Δυάρι</option>
+					<option value="3">Τριάρι</option>
+					<option value="4">Μεζονέτα</option>
+					<option value="5">Άλλο</option>
+				</select>
+			</div>
+			<div class="form-group" data-mini="true">   
+				<label for="title">Τίτλος αγγελίας:</label>
+				<input type="text" name="title" id="title" value="" required/>
+				<label for="details">Λεπτομέρειες αγγελίας</label>
+				<input type="text" name="details" id="details" value="" data-clear-btn="true"/>
+				<label for="address">Διεύθυνση/Τοποθεσία:</label>
+				<input type="text" name="address" id="address" value="" required/>
+				<label for="file">Εικόνα</label>
+				<input id="file" type="file" accept="image/*" name="image">
+				<img id="preview" src="#" style="max-width: 100%"/>
+			</div>
+			<button id="submit" type="submit" value="Submit">Submit</button>
+		</form>
+	</div>
+	<div data-role="page" id="map_screen" data-title="Map" data-theme="b">
+		<div data-role="header" data-position="fixed">
+			<h1>Αγγελίες στον χάρτη</h1>
+			<a class="ui-btn-left" data-icon="back" href="#main_screen" data-clear-btn="true">Πίσω</a>
+		</div>
+		<div id="mapcont">
+			<div id="mapid"></div>
+		</div>
+	</div>
+	<div data-role="page" id="house_screen" data-title="Report details" data-theme="b">
+		<div data-role="header" class="ui-bar" align="center" data-position="fixed" style="text-align:center;">
+			<h1>Λεπτομέρειες</h1>
+			<div data-role="controlgroup" data-type="horizontal">
+				<a data-role="button" data-icon="home" href="#main_screen">Home</a>
+				<a data-role="button" data-icon="navigation" href="#map_screen">Χάρτης</a>
+				<a data-role="button" data-icon="bullets" href="#list_screen">Λίστα</a>
+			</div>
+		</div>
+		<h1>Τίτλος αγγελίας:</h1>
+		<p id="house_title"></p>
+		<img id="house_image" src=""></img>
+		<p id="house_rating"></p>
+		<h1>Κατηγορία:</h1>
+		<p id="house_category"></p>
+		<h1>Διεύθυνση/Τοποθεσία:</h1>
+		<p id="house_address"></p>
+		<h1>Λεπτομέρειες:</h1>
+		<p id="house_details"></p>
+		<h1>Ημερομηνία αγγελίας:</h1>
+		<p id="house_date"></p>
+		<h1>Ιδιοκτήτης:</h1>
+		<p id="house_owner"></p>
+		<h1 for="owner_email">Email:</h1>
+		<p id="owner_email"></p>
+		<h1>Rate:</h1>
+		<div class="ui-field-contain">
+		<input type="range" name="Rate" id="user_rate" value="0" min="0" max="5">
+		</div>
+		<a data-role="button" data-icon="delete" id="delete">Delete</a>
+	</div>
+</body>
+
+</html>
