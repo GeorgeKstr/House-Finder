@@ -37,7 +37,4 @@ The backend source code needs to be hosted on a web server. You will need to upd
 - Database Authentication Data: Update the database connection information in the front-end JavaScript code to connect to the backend database.
 - Web Host URL: Update the URL in the front-end code to communicate with the backend APIs.
 
-## Contributing
-
-Contributions to the project are welcome! If you find any bugs or have suggestions for improvements, please open an issue or submit a pull request.
 
