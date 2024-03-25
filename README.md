@@ -15,7 +15,7 @@ This Cordova/PhoneGap application serves as a platform for apartment rental and 
 
 ## Technologies Used
 
-- **HTML/CSS/JavaScript:** Front-end development for user interface and interactivity.
+- **HTML/CSS/JavaScript/JQuery Mobile:** Front-end development for user interface and interactivity.
 - **Cordova/PhoneGap:** Framework for wrapping web applications into mobile apps.
 - **Mapbox/Leaflet:** Libraries for displaying interactive maps and location-based services.
 
